@@ -10,11 +10,11 @@ var Burrito = function() {
 	this.toString = function() {
 		var burritoString = "";
 		
-		burritoString += this.burritoType + " ";
-		burritoString += this.riceType + " ";
-		burritoString += this.beanType + " ";
+		burritoString += this.burritoType + ", ";
+		burritoString += this.riceType + ", ";
+		burritoString += this.beanType + ", ";
 		for (var i = 0; i < this.salsaType.length; i++) {
-			burritoString += this.salsaType[i] + " ";
+			burritoString += this.salsaType[i] + ", ";
 		}
 		if (this.guacamole) {
 			burritoString += this.guacamole;
@@ -107,10 +107,15 @@ function generateTable() {
 function generateRow(burrito) {
 	
 	var row = document.createElement("tr");
-	var tableData = document.createElement("td");	
+	var tableData = document.createElement("td");
+	var tableDataBurritoPrice = document.createElement("td");
 	var burritoText = document.createTextNode(burrito.toString());
+	var burritoPriceText = document.createTextNode(burrito.price.toFixed(2));
 	tableData.appendChild(burritoText);
+	tableDataBurritoPrice.appendChild(burritoPriceText);
 	row.appendChild(tableData);
+	row.appendChild(tableDataBurritoPrice);
+	
 	return row;
 }
 
@@ -131,9 +136,14 @@ function generateTotalRow() {
 	}
 	var row = document.createElement("tr");
 	var tableData = document.createElement("td");
+	var tableDataLabel = document.createElement("td");
 	var totalText = document.createTextNode(total.toFixed(2));
+	var totalLabelText = document.createTextNode("Total:");
 	tableData.appendChild(totalText);
+	tableDataLabel.appendChild(totalLabelText);
+	row.appendChild(tableDataLabel);
 	row.appendChild(tableData);
+	
 	return row;
 }
 
