@@ -1,4 +1,5 @@
 var burritoOrder;
+
 var Burrito = function() {
 	this.burritoType = "";
 	this.riceType = "";
@@ -87,12 +88,10 @@ function buildBurrito() {
 
 function updateReceipt() {
 	var table = generateTable();	
-	displayTable(table);	
-	
+	displayTable(table);
 }
 
 function generateTable() {
-	
 	var table = document.createElement("table");
 	table.id = "receipt";
 	for (var i = 0; i < burritoOrder.length; i++) {
@@ -104,29 +103,39 @@ function generateTable() {
 	return table;
 }
 	
-function generateRow(burritoIndex) {
+function generateRow(burritoIndex) {	
+	var burrito = burritoOrder[burritoIndex];	
+	var row = document.createElement("tr");	
 	
-	var burrito = burritoOrder[burritoIndex];
+	var tableDataBurritoDescription = generateDescriptionCell(burrito);
+	var tableDataBurritoPrice = generatePriceCell(burrito.price);
+	var tableDataRemoveButton = generateRemoveButtonCell(burritoIndex);	
 	
-	var row = document.createElement("tr");
-	var tableData = document.createElement("td");
-	var tableDataBurritoPrice = document.createElement("td");
-	var burritoText = document.createTextNode(burrito.toString());
-	var burritoPriceText = document.createTextNode(burrito.price.toFixed(2));
-	tableData.appendChild(burritoText);
-	tableDataBurritoPrice.appendChild(burritoPriceText);
-	row.appendChild(tableData);
-	row.appendChild(tableDataBurritoPrice);
-	
-	var removeButtonTableData = generateRemoveButtonCell(burritoIndex);
-	
-	row.appendChild(removeButtonTableData);
+	row.appendChild(tableDataBurritoDescription);
+	row.appendChild(tableDataBurritoPrice);	
+	row.appendChild(tableDataRemoveButton);	
 	
 	return row;
 }
+
+function generateDescriptionCell(burrito) {
+	var tableData = document.createElement("td");
+	var burritoText = document.createTextNode(burrito.toString());
+	tableData.appendChild(burritoText);
+	
+	return tableData;
+}
+
+function generatePriceCell(price) {
+	var tableDataBurritoPrice = document.createElement("td");
+	var burritoPriceText = document.createTextNode(price.toFixed(2));
+	tableDataBurritoPrice.appendChild(burritoPriceText);
+	
+	return tableDataBurritoPrice;
+}
 	
 function generateRemoveButtonCell(burritoIndex) {
-	var removeButtonTableData = document.createElement("td");
+	var tableDataRemoveButton = document.createElement("td");
 	var removeButtonText = document.createTextNode("Remove");
 	var removeButton = document.createElement("button");
 	
@@ -134,9 +143,9 @@ function generateRemoveButtonCell(burritoIndex) {
 	removeButton.onclick = removeBurrito;
 		
 	removeButton.appendChild(removeButtonText);
-	removeButtonTableData.appendChild(removeButton);
+	tableDataRemoveButton.appendChild(removeButton);
 		
-	return removeButtonTableData;
+	return tableDataRemoveButton;
 }
 
 
@@ -152,14 +161,17 @@ function displayTable(table) {
 
 function generateTotalRow() {
 	var total = 0;
+	
 	for (var i = 0; i < burritoOrder.length; i++) {
 		total += burritoOrder[i].price;
 	}
+	
 	var row = document.createElement("tr");
 	var tableData = document.createElement("td");
 	var tableDataLabel = document.createElement("td");
 	var totalText = document.createTextNode(total.toFixed(2));
 	var totalLabelText = document.createTextNode("Total:");
+	
 	tableData.appendChild(totalText);
 	tableDataLabel.appendChild(totalLabelText);
 	row.appendChild(tableDataLabel);
@@ -169,11 +181,8 @@ function generateTotalRow() {
 }
 
 function removeBurrito() {
-	
 	var burritoIndex = parseInt(this.getAttribute("burritoIndex"));
+	
 	burritoOrder.splice(burritoIndex, 1);
-	updateReceipt();
-	
+	updateReceipt();	
 }
-
-	
