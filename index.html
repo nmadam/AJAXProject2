@@ -6,9 +6,37 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <script type="text/javascript" src="burrito.js"></script>
   <link rel="stylesheet" href="order.css"/>
-  <title>Burrito Order</title>
-  
+  <title>Burrito Order</title>  
 </head>
 <body>
+	<h1>Burrito Order</h1>
+	<form>
+		<label>Choose your burrito:
+			<select id="burritoType">
+				<option value="chicken" price="6.20" selected>Chicken - $6.20</option>
+				<option value="steak" price="6.75">Steak - $6.75</option>
+				<option value="carnitas" price="6.60">Carnitas - $6.60</option>
+				<option value="barbacoa" price="6.60">Barbacoa - $6.60</option>
+				<option value="vegetarian" price="6.20">Vegetarian - $6.20</option>
+			</select>
+		</label>
+		<label>Select a rice type:
+			<input type="radio" value="white" name="riceType" id="whiteRice">White Rice</input>
+			<input type="radio" value="brown" name="riceType" id="brownRice" checked>Brown Rice</input>
+		</label>
+		<label>Select a bean type:
+			<input type="radio" value="pinto" name="beanType" id="pintoBean">Pinto Beans</input>
+			<input type="radio" value="black" name="beanType" id="blackBean" checked>Black Beans</input>
+		</label>
+		<label>Choose Salsa(s)
+			<input type="checkbox" value="pico" id="pico">Pico De Gallo</input>
+			<input type="checkbox" value="corn" id="corn">Roasted Corn</input>
+			<input type="checkbox" value="greenT" id="greenT">Tomatillo - Green</input>
+			<input type="checkbox" value="redT" id="redT">Tomatillo - Red</input>
+		</label>
+		<label>Add Guacamole $1.40
+			<input type="checkbox" price="1.40" value="guac" id="guac"></input>
+		</label>
+	</form>
 </body>
 </html>
