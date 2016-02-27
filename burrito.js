@@ -96,7 +96,7 @@ function generateTable() {
 	var table = document.createElement("table");
 	table.id = "receipt";
 	for (var i = 0; i < burritoOrder.length; i++) {
-		var row = generateRow(burritoOrder[i]);
+		var row = generateRow(i);
 		table.appendChild(row);
 	}
 	var orderTotal = generateTotalRow();
@@ -104,7 +104,9 @@ function generateTable() {
 	return table;
 }
 	
-function generateRow(burrito) {
+function generateRow(burritoIndex) {
+	
+	var burrito = burritoOrder[burritoIndex];
 	
 	var row = document.createElement("tr");
 	var tableData = document.createElement("td");
@@ -116,8 +118,27 @@ function generateRow(burrito) {
 	row.appendChild(tableData);
 	row.appendChild(tableDataBurritoPrice);
 	
+	var removeButtonTableData = generateRemoveButtonCell(burritoIndex);
+	
+	row.appendChild(removeButtonTableData);
+	
 	return row;
 }
+	
+function generateRemoveButtonCell(burritoIndex) {
+	var removeButtonTableData = document.createElement("td");
+	var removeButtonText = document.createTextNode("Remove");
+	var removeButton = document.createElement("button");
+	
+	removeButton.setAttribute("burritoIndex", burritoIndex);
+	removeButton.onclick = removeBurrito;
+		
+	removeButton.appendChild(removeButtonText);
+	removeButtonTableData.appendChild(removeButton);
+		
+	return removeButtonTableData;
+}
+
 
 function displayTable(table) {
 	var oldReceipt = document.getElementById("receipt");
@@ -142,9 +163,17 @@ function generateTotalRow() {
 	tableData.appendChild(totalText);
 	tableDataLabel.appendChild(totalLabelText);
 	row.appendChild(tableDataLabel);
-	row.appendChild(tableData);
-	
+	row.appendChild(tableData);	
+		
 	return row;
 }
 
-//	document.getElementById("deleteBurrito").onclick = deleteBurrito;
+function removeBurrito() {
+	
+	var burritoIndex = parseInt(this.getAttribute("burritoIndex"));
+	burritoOrder.splice(burritoIndex, 1);
+	updateReceipt();
+	
+}
+
+	
