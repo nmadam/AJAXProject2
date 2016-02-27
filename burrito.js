@@ -4,8 +4,23 @@ var Burrito = function() {
 	this.riceType = "";
 	this.beanType = "";
 	this.salsaType = [];
-	this.guac = false;
+	this.guacamole = false;
 	this.price = 0;
+	
+	this.toString = function() {
+		var burritoString = "";
+		
+		burritoString += this.burritoType + " ";
+		burritoString += this.riceType + " ";
+		burritoString += this.beanType + " ";
+		for (var i = 0; i < this.salsaType.length; i++) {
+			burritoString += this.salsaType[i] + " ";
+		}
+		if (this.guacamole) {
+			burritoString += this.guacamole;
+		}
+		return burritoString;
+	}
 }
 
 function init(){	
@@ -26,7 +41,7 @@ function buildBurrito() {
 	var brownRice = document.getElementById("brownRice");
 	var pintoBean = document.getElementById("pintoBean");
 	var blackBean = document.getElementById("blackBean");
-	var guacamole = document.getElementById("guac");
+	var guacamole = document.getElementById("guacamole");
 	
 	
 	burrito.burritoType = burritoSelect.value;
@@ -62,7 +77,7 @@ function buildBurrito() {
 	}
 	
 	if (guacamole.checked) {
-		burrito.guac = guacamole.value;
+		burrito.guacamole = guacamole.value;
 		var guacPrice = guacamole.getAttribute("price");		
 		burrito.price += parseFloat(guacPrice);
 	}
@@ -92,9 +107,9 @@ function generateTable() {
 function generateRow(burrito) {
 	
 	var row = document.createElement("tr");
-	var tableData = document.createElement("td");
-	var test = document.createTextNode("Burrito stub");
-	tableData.appendChild(test);
+	var tableData = document.createElement("td");	
+	var burritoText = document.createTextNode(burrito.toString());
+	tableData.appendChild(burritoText);
 	row.appendChild(tableData);
 	return row;
 }
