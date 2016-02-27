@@ -84,8 +84,8 @@ function generateTable() {
 		var row = generateRow(burritoOrder[i]);
 		table.appendChild(row);
 	}
-	//var orderTotal = generateTotalRow();
-	//table.appendChild(orderTotal);
+	var orderTotal = generateTotalRow();
+	table.appendChild(orderTotal);
 	return table;
 }
 	
@@ -108,4 +108,18 @@ function displayTable(table) {
 	
 	document.body.appendChild(table);
 }
+
+function generateTotalRow() {
+	var total = 0;
+	for (var i = 0; i < burritoOrder.length; i++) {
+		total += burritoOrder[i].price;
+	}
+	var row = document.createElement("tr");
+	var tableData = document.createElement("td");
+	var totalText = document.createTextNode(total);
+	tableData.appendChild(totalText);
+	row.appendChild(tableData);
+	return row;
+}
+
 //	document.getElementById("deleteBurrito").onclick = deleteBurrito;
