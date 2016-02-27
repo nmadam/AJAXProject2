@@ -116,7 +116,7 @@ function generateTotalRow() {
 	}
 	var row = document.createElement("tr");
 	var tableData = document.createElement("td");
-	var totalText = document.createTextNode(total);
+	var totalText = document.createTextNode(total.toFixed(2));
 	tableData.appendChild(totalText);
 	row.appendChild(tableData);
 	return row;
