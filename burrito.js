@@ -71,7 +71,31 @@ function buildBurrito() {
 }
 
 function updateReceipt() {
-	//generateTable();
+	var table = generateTable();	
+	//displayTable(table);	
 	
-		
 }
+
+function generateTable() {
+	
+	var table = document.createElement("table");
+	
+	for (var i = 0; i < burritoOrder.length; i++) {
+		var row = generateRow(burritoOrder[i]);
+		table.appendChild(row);
+	}
+	//var orderTotal = generateTotalRow();
+	//table.appendChild(orderTotal);
+	return table;
+}
+	
+function generateRow(burrito) {
+	
+	var row = document.createElement("tr");
+	var tableData = document.createElement("td");
+	var burrito = document.createTextNode("Burrito stub");
+	tableData.appendChild(test);
+	row.appendChild(tableData);
+	return row;
+}
+	document.getElementById("deleteBurrito").onclick = deleteBurrito;
