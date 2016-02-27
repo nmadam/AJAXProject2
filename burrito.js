@@ -5,6 +5,7 @@ var Burrito = function() {
 	this.beanType = "";
 	this.salsaType = [];
 	this.guac = false;
+	this.price = 0;
 }
 
 function init(){	
@@ -20,14 +21,26 @@ function addBurrito() {
 	
 function buildBurrito() {
 	var burrito = new Burrito();	
-
+	var burritoSelect = document.getElementById("burritoType");
 	var whiteRice = document.getElementById("whiteRice");
 	var brownRice = document.getElementById("brownRice");
 	var pintoBean = document.getElementById("pintoBean");
 	var blackBean = document.getElementById("blackBean");
 	var guacamole = document.getElementById("guac");
 	
-	burrito.burritoType = document.getElementById("burritoType").value;
+	
+	burrito.burritoType = burritoSelect.value;
+	
+	var burritoOptions = burritoSelect.childNodes;
+	
+	for (var i = 0; i < burritoOptions.length; i++) {
+		var currentBurritoOption = burritoOptions[i];
+		
+		if (currentBurritoOption.value == burritoSelect.value) {
+			burrito.price = currentBurritoOption.getAttribute("price");
+			burrito.price = parseFloat(burrito.price);
+		}
+	}
 	
 	if (whiteRice.checked) {
 		burrito.riceType = whiteRice.value;	
@@ -49,11 +62,16 @@ function buildBurrito() {
 	}
 	
 	if (guacamole.checked) {
-		burrito.guac = guacamole.value;	
+		burrito.guac = guacamole.value;
+		var guacPrice = guacamole.getAttribute("price");		
+		burrito.price += parseFloat(guacPrice);
 	}
+	
 	return burrito;
 }
 
 function updateReceipt() {
-
+	//generateTable();
+	
+		
 }
