@@ -72,14 +72,14 @@ function buildBurrito() {
 
 function updateReceipt() {
 	var table = generateTable();	
-	//displayTable(table);	
+	displayTable(table);	
 	
 }
 
 function generateTable() {
 	
 	var table = document.createElement("table");
-	
+	table.id = "receipt";
 	for (var i = 0; i < burritoOrder.length; i++) {
 		var row = generateRow(burritoOrder[i]);
 		table.appendChild(row);
@@ -93,9 +93,19 @@ function generateRow(burrito) {
 	
 	var row = document.createElement("tr");
 	var tableData = document.createElement("td");
-	var burrito = document.createTextNode("Burrito stub");
+	var test = document.createTextNode("Burrito stub");
 	tableData.appendChild(test);
 	row.appendChild(tableData);
 	return row;
 }
-	document.getElementById("deleteBurrito").onclick = deleteBurrito;
+
+function displayTable(table) {
+	var oldReceipt = document.getElementById("receipt");
+	
+	if (oldReceipt) {
+		oldReceipt.parentElement.removeChild(oldReceipt);
+	}
+	
+	document.body.appendChild(table);
+}
+//	document.getElementById("deleteBurrito").onclick = deleteBurrito;
