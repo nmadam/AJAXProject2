@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-  <script type="text/javascript" src="burrito.js"></script>
-  <link rel="stylesheet" href="order.css"/>
-  <title>Burrito Order</title>  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<script type="text/javascript" src="burrito.js"></script>
+	<link rel="stylesheet" href="order.css"/>
+	<title>Burrito Order</title>  
 </head>
 <body>
 	<h1>Burrito Order</h1>
@@ -21,12 +21,12 @@
 			</select>
 		</label>
 		<label>Select a rice type:
-			<input type="radio" value="white" name="riceType" id="whiteRice">White Rice</input>
-			<input type="radio" value="brown" name="riceType" id="brownRice" checked>Brown Rice</input>
+			<input type="radio" value="White Rice" name="riceType" id="whiteRice">White Rice</input>
+			<input type="radio" value="Brown Rice" name="riceType" id="brownRice" checked>Brown Rice</input>
 		</label>
 		<label>Select a bean type:
-			<input type="radio" value="pinto" name="beanType" id="pintoBean">Pinto Beans</input>
-			<input type="radio" value="black" name="beanType" id="blackBean" checked>Black Beans</input>
+			<input type="radio" value="Pinto Bean" name="beanType" id="pintoBean">Pinto Beans</input>
+			<input type="radio" value="Black Bean" name="beanType" id="blackBean" checked>Black Beans</input>
 		</label>
 		<label>Choose Salsa(s)
 			<input type="checkbox" value="Pico De Gallo" id="salsa1">Pico De Gallo</input>
@@ -34,8 +34,8 @@
 			<input type="checkbox" value="Green Tomatillo" id="salsa3">Tomatillo - Green</input>
 			<input type="checkbox" value="Red Tomatilla" id="salsa4">Tomatillo - Red</input>
 		</label>
-		<label>Add Guacamole $1.40
-			<input type="checkbox" price="1.40" value="guacamole" id="guacamole"></input>
+		<label id="guac">Add Guacamole $1.40
+			<input type="checkbox" price="1.40" value="Guacamole" id="guacamole"></input>
 		</label>
 	</form>
 	<button id="addBurrito">Add Burrito to Order</button>

@@ -1,5 +1,6 @@
 var burritoOrder;
 
+//Creates description of burrito order
 var Burrito = function() {
 	this.burritoType = "";
 	this.riceType = "";
@@ -14,6 +15,7 @@ var Burrito = function() {
 		burritoString += this.burritoType + ", ";
 		burritoString += this.riceType + ", ";
 		burritoString += this.beanType + ", ";
+		
 		for (var i = 0; i < this.salsaType.length; i++) {
 			burritoString += this.salsaType[i] + ", ";
 		}
@@ -34,7 +36,8 @@ function addBurrito() {
 	burritoOrder.push(burrito);
 	updateReceipt();
 }
-	
+
+//Collects order information from user form
 function buildBurrito() {
 	var burrito = new Burrito();	
 	var burritoSelect = document.getElementById("burritoType");
@@ -81,8 +84,7 @@ function buildBurrito() {
 		burrito.guacamole = guacamole.value;
 		var guacPrice = guacamole.getAttribute("price");		
 		burrito.price += parseFloat(guacPrice);
-	}
-	
+	}	
 	return burrito;
 }
 
@@ -101,7 +103,7 @@ function generateTable() {
 	var orderTotal = generateTotalRow();
 	table.appendChild(orderTotal);
 	return table;
-}
+} 
 	
 function generateRow(burritoIndex) {	
 	var burrito = burritoOrder[burritoIndex];	
@@ -128,7 +130,7 @@ function generateDescriptionCell(burrito) {
 
 function generatePriceCell(price) {
 	var tableDataBurritoPrice = document.createElement("td");
-	var burritoPriceText = document.createTextNode(price.toFixed(2));
+	var burritoPriceText = document.createTextNode("$ " + price.toFixed(2));
 	tableDataBurritoPrice.appendChild(burritoPriceText);
 	
 	return tableDataBurritoPrice;
@@ -148,7 +150,6 @@ function generateRemoveButtonCell(burritoIndex) {
 	return tableDataRemoveButton;
 }
 
-
 function displayTable(table) {
 	var oldReceipt = document.getElementById("receipt");
 	
@@ -167,15 +168,16 @@ function generateTotalRow() {
 	}
 	
 	var row = document.createElement("tr");
-	var tableData = document.createElement("td");
+	row.id = "totalRow";
+	var tableData = document.createElement("td");	
 	var tableDataLabel = document.createElement("td");
-	var totalText = document.createTextNode(total.toFixed(2));
+	var totalText = document.createTextNode("$ " + total.toFixed(2));
 	var totalLabelText = document.createTextNode("Total:");
 	
 	tableData.appendChild(totalText);
 	tableDataLabel.appendChild(totalLabelText);
 	row.appendChild(tableDataLabel);
-	row.appendChild(tableData);	
+	row.appendChild(tableData);
 		
 	return row;
 }

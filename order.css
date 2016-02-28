@@ -2,5 +2,38 @@ label {
 	display: block;
 	margin-bottom: 1em;
 	margin-left: .5em;
+	font-size: 1em;
 }
 
+table {
+  padding: .5em;
+  border: .25em groove black;
+}
+
+button {
+    background-color: lightgrey;
+    border: .25em grove black;
+    color: black;
+    padding: 1.5em;
+    margin: 1.5em;
+    margin-bottom: 1em;
+    text-align: left;
+    display: inline-block;
+    font-size: .75em;
+}
+
+h1 {
+	font-size: 2.5em;
+	color: blue;
+	font-weight: bold;
+}
+
+#guac {
+	font-style: italic;
+	font-size: 1.25em;
+}
+
+#totalRow {
+	font-weight: bold;
+	font-size: 1.5em;
+}
